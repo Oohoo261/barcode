@@ -1,0 +1,221 @@
+/* สไตล์พื้นฐานของฟอร์มทั้งหมด */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    max-width: 720px;
+    max-height: 1280px;
+    overflow: hidden;
+}
+
+/* สไตล์สำหรับ Header Bar */
+.container-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.header-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+/* สไตล์สำหรับ Title */
+.header-bar h1 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+}
+
+/* สไตล์ปุ่ม List */
+.list-button {
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    font-size: 1.4em;
+    color: #ffffff;
+    background-color: #28a745;
+    border: none;
+    cursor: pointer;
+}
+
+.list-button:hover {
+    background-color: #218838;
+}
+
+
+
+/* สไตล์ container สำหรับ main.html */
+.container-main {
+    width: 100%;
+    max-width: 720px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.container-form {
+    width: 100%;
+    max-width: 720px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* สไตล์ .form-group สำหรับ main.html */
+.container-main .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+/* สไตล์ label และ input */
+.container-main label {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+    text-align: left;
+    width: 100%;
+}
+
+.container-main input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 1.3em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* สไตล์ .form-group สำหรับ form.html */
+.container-form .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* สไตล์ label ใน form.html */
+.container-form label {
+    font-size: 1.3em;
+    width: 30%;
+    padding-right: 5px;
+    text-align: left;
+}
+
+/* สไตล์ input */
+.container-form input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 1.3em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* สไตล์ปุ่ม Submit */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.3em;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* สไตล์สำหรับ Footer Bar */
+.container-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 720px;
+    padding: 0px;
+    background-color: #007bff;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+}
+
+/* สไตล์สำหรับปุ่มใน Footer */
+.footer-button {
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.footer-button:hover {
+    background-color: #0056b3;
+}
+
+/* Login Form Container */
+.container-login {
+    width: 100%;
+    max-width: 720px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 30px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.container-login button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #0073e6;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.container-login button[type="submit"]:hover {
+    background-color: #005bb5;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Header Bar -->
+    <div class="container-header">
+        <div class="header-bar">
+            <h1>Login</h1>
+            <button class="list-button">List</button>
+        </div>
+    </div>
+
+    <!-- Login Form Container -->
+    <div class="container-login">
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter Username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter Password" required>
+            </div>
+            <button type="submit">Login</button>
+            <div id="error-message" style="color: red;"></div> <!-- For displaying error messages -->
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-footer">
+        <button class="footer-button">SEARCH</button>
+        <button class="footer-button">HOME</button>
+        <button class="footer-button">BACK</button>
+    </div>
+
+    <script>
+        // Handle the form submission
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Send login data to connect.php
+            fetch('connect.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Redirect to main.html after successful login
+                    window.location.href = 'main.php';
+                } else {
+                    // Display error message
+                    document.getElementById('error-message').textContent = data.message;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('error-message').textContent = 'An error occurred. Please try again.';
+            });
+        });
+    </script>
+
+</body>
+</html>
