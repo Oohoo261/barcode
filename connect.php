@@ -1,10 +1,12 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start(); // เริ่ม session ถ้ายังไม่มีการเริ่ม
+}
+
 $servername = "45.91.135.68";
 $username = "root";
 $password = "5K,google";
 $db_name = "pcs_uat";
-
-session_start(); // เริ่ม session
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$db_name", $username, $password);
