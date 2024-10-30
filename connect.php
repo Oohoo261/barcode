@@ -22,8 +22,8 @@ try {
 
     // Check if a user was found
     if ($stmt->rowCount() > 0) {
-        // User found, set session variable
-        $_SESSION['loggedin'] = true; // ตั้งค่า session ว่าเข้าสู่ระบบแล้ว
+        // User found, set session variable to username
+        $_SESSION['loggedin'] = $data->username; // เก็บชื่อ username ใน session
         echo json_encode(['success' => true]);
     } else {
         // User not found
@@ -32,5 +32,4 @@ try {
 } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
 }
-
 ?>
