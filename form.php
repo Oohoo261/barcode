@@ -7,9 +7,11 @@ if (!isset($_SESSION['loggedin'])) {
     die("User not logged in");
 }
 
+// Initialize an empty message variable
+$message = '';
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get values from the form
-    $QR_ID = $_POST['QR_ID'];
     $TYPE = $_POST['TYPE'];
     $THICKNESS = $_POST['THICKNESS'];
     $WIDTH = $_POST['WIDTH'];
@@ -26,25 +28,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $UPDATED_BY = $_SESSION['loggedin']; // Get the username from the session
 
     // Prepare SQL statement
-    $sql = "INSERT INTO qrcode_printing (QR_ID, TYPE, THICKNESS, WIDTH, LENGTH, WEIGHT, LOT_NO, PO_NO, VENDOR, PRINT_DATE, EXPIRE_DATE, REMARK, STATUS, UPDATE_DATE, UPDATED_BY) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    
+    $sql = "INSERT INTO qrcode_printing (TYPE, THICKNESS, WIDTH, LENGTH, WEIGHT, LOT_NO, PO_NO, VENDOR, PRINT_DATE, EXPIRE_DATE, REMARK, STATUS, UPDATE_DATE, UPDATED_BY) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
     // Create a prepared statement
     if ($stmt = $conn->prepare($sql)) {
         // Bind parameters
-        $stmt->bind_param('sssssssssssssss', $QR_ID, $TYPE, $THICKNESS, $WIDTH, $LENGTH, $WEIGHT, $LOT_NO, $PO_NO, $VENDOR, $PRINT_DATE, $EXPIRE_DATE, $REMARK, $STATUS, $UPDATE_DATE, $UPDATED_BY);
+        $stmt->bind_param('ssssssssssssss', $TYPE, $THICKNESS, $WIDTH, $LENGTH, $WEIGHT, $LOT_NO, $PO_NO, $VENDOR, $PRINT_DATE, $EXPIRE_DATE, $REMARK, $STATUS, $UPDATE_DATE, $UPDATED_BY);
 
         // Execute the statement
         if ($stmt->execute()) {
-            echo "Record added successfully.";
+            $message = "Record added successfully."; // Set success message
         } else {
-            echo "Error: " . $stmt->error;
+            $message = "Error: " . $stmt->error; // Set error message
         }
         
         // Close statement
         $stmt->close();
     } else {
-        echo "Error preparing statement: " . $conn->error;
+        $message = "Error preparing statement: " . $conn->error; // Set error message
     }
 
     // Close connection
@@ -73,10 +75,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="container-form">
         <form method="POST" action="">
-            <div class="form-group">
-                <label for="QR_ID">QR_ID:</label>
-                <input type="text" name="QR_ID" id="QR_ID" placeholder="">
-            </div>
             <div class="form-group">
                 <label for="TYPE">TYPE:</label>
                 <input type="text" name="TYPE" id="TYPE" placeholder="">
@@ -111,11 +109,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group">
                 <label for="PRINT_DATE">PRINT DATE:</label>
-                <input type="date" name="PRINT_DATE" id="PRINT_DATE" placeholder="">
+                <input type="date" name="PRINT_DATE" id="PRINT_DATE" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="EXPIRE_DATE">EXPIRE DATE:</label>
-                <input type="date" name="EXPIRE_DATE" id="EXPIRE_DATE" placeholder="">
+                <input type="date" name="EXPIRE_DATE" id="EXPIRE_DATE" placeholder="" required>
             </div>
             <div class="form-group">
                 <label for="REMARK">REMARK:</label>
@@ -123,16 +121,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group">
                 <label for="STATUS">STATUS:</label>
-                <input type="text" name="STATUS" id="STATUS" placeholder="">
+                <input type="text" name="STATUS" id="STATUS" placeholder="" required>
             </div>
             <button type="submit">Submit</button>
         </form>
+
+        <!-- Display the message below the submit button -->
+        <?php if ($message): ?>
+            <div class="message"><?php echo $message; ?></div>
+        <?php endif; ?>
     </div>
 
     <div class="container-footer">
         <button class="footer-button">SEARCH</button>
-        <button class="footer-button">HOME</button>
-        <button class="footer-button">BACK</button>
+        <button class="footer-button" onclick="window.location.href='main.php';">HOME</button>
+        <button class="footer-button" onclick="window.history.back();">BACK</button>
     </div>
 
     <script>

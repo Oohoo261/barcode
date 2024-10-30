@@ -31,8 +31,8 @@
 
     <div class="container-footer">
         <button class="footer-button">SEARCH</button>
-        <button class="footer-button">HOME</button>
-        <button class="footer-button">BACK</button>
+        <button class="footer-button" onclick="window.location.href='main.php';">HOME</button>
+        <button class="footer-button" onclick="window.history.back();">BACK</button>
     </div>
 
     <script>
