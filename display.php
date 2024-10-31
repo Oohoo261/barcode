@@ -20,18 +20,8 @@ function createQRCode($data) {
 </head>
 <body>
 
-    <!-- Header Bar -->
-    <div class="container-header">
-        <div class="header-bar">
-            <a href="logout.php" class="logout-button" style="display: flex; align-items: center; justify-content: center; background-color:
-                 red; color: white; border: none; padding: 0; cursor: pointer; text-decoration: none; width: 60px; margin: 0; height: 60px; font-size: 1.1em;">Logout</a>
-            <h1>Result</h1>
-            <button class="list-button">List</button>
-        </div>
-    </div>
 
     <div class="container-result">
-    <h1 class="title-result">Data Submitted</h1>
     <div class="result-content">
         <?php
         // Generate the QR code based on the form data
@@ -79,15 +69,7 @@ function createQRCode($data) {
         </table>
     </div>
 
-    <button onclick="window.location.href='main.php';">Back to Main</button>
 </div>
-
-    
-    <div class="container-footer">
-        <button class="footer-button">SEARCH</button>
-        <button class="footer-button" onclick="window.location.href='main.php';">HOME</button>
-        <button class="footer-button" onclick="window.history.back();">EXIT</button>
-    </div>
 
 </body>
 </html>
