@@ -31,25 +31,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO qrcode_printing (TYPE, THICKNESS, WIDTH, LENGTH, WEIGHT, LOT_NO, PO_NO, VENDOR, PRINT_DATE, EXPIRE_DATE, REMARK, STATUS, UPDATE_DATE, UPDATED_BY) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-    // Create a prepared statement
     if ($stmt = $conn->prepare($sql)) {
         // Bind parameters
         $stmt->bind_param('ssssssssssssss', $TYPE, $THICKNESS, $WIDTH, $LENGTH, $WEIGHT, $LOT_NO, $PO_NO, $VENDOR, $PRINT_DATE, $EXPIRE_DATE, $REMARK, $STATUS, $UPDATE_DATE, $UPDATED_BY);
 
         // Execute the statement
         if ($stmt->execute()) {
-            $message = "Record added successfully."; // Set success message
+            // Redirect to display.php with all the form data in URL
+            header("Location: display.php?TYPE=$TYPE&THICKNESS=$THICKNESS&WIDTH=$WIDTH&LENGTH=$LENGTH&WEIGHT=$WEIGHT&LOT_NO=$LOT_NO&PO_NO=$PO_NO&VENDOR=$VENDOR&PRINT_DATE=$PRINT_DATE&EXPIRE_DATE=$EXPIRE_DATE&REMARK=$REMARK&STATUS=$STATUS");
+            exit();
         } else {
-            $message = "Error: " . $stmt->error; // Set error message
+            $message = "Error: " . $stmt->error;
         }
         
-        // Close statement
         $stmt->close();
     } else {
-        $message = "Error preparing statement: " . $conn->error; // Set error message
+        $message = "Error preparing statement: " . $conn->error;
     }
 
-    // Close connection
     $conn->close();
 }
 ?>
@@ -135,7 +134,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container-footer">
         <button class="footer-button">SEARCH</button>
         <button class="footer-button" onclick="window.location.href='main.php';">HOME</button>
-        <button class="footer-button" onclick="window.history.back();">BACK</button>
+        <button class="footer-button" onclick="window.history.back();">EXIT</button>
     </div>
 
     <script>

@@ -1,0 +1,174 @@
+/* สไตล์พื้นฐานของฟอร์มทั้งหมด */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    max-width: 720px;
+    max-height: 1280px;
+    overflow: hidden;
+}
+
+/* สไตล์สำหรับ Header Bar */
+.container-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.header-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0;
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+/* สไตล์สำหรับ Title */
+.header-bar h1 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+}
+
+/* สไตล์ปุ่ม List */
+.list-button {
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    font-size: 1.4em;
+    color: #ffffff;
+    background-color: #28a745;
+    border: none;
+    cursor: pointer;
+}
+
+.list-button:hover {
+    background-color: #218838;
+}
+
+/* สไตล์สำหรับ Footer Bar */
+.container-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 720px;
+    padding: 0px;
+    background-color: #007bff;
+    color: #ffffff;
+    position: fixed;
+    bottom: 0;
+}
+
+/* สไตล์สำหรับปุ่มใน Footer */
+.footer-button {
+    height: 80px;
+    margin: 0;
+    padding: 0;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    font-size: 1.4em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.footer-button:hover {
+    background-color: #0056b3;
+}
+
+/* สไตล์สำหรับ container-result */
+.container-result {
+    width: 100%;
+    max-width: 720px;
+    height: 100%;
+    background-color: #ffffff;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+/* สไตล์สำหรับ title */
+.title-result {
+    text-align: center;
+    font-size: 1.8em;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+/* สไตล์สำหรับตาราง */
+.container-result table {
+    width: 50%;
+    border-collapse: collapse;
+    margin-left: auto; /* ดันตารางไปทางขวา */
+    margin-right: 0;
+}
+
+/* สไตล์หัวคอลัมน์ */
+.container-result th {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 10px;
+    font-weight: bold;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 1.3em;
+}
+
+/* สไตล์ข้อมูล */
+.container-result td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+    font-size: 1.3em;
+}
+
+/* สีพื้นหลังสำหรับแถวสลับสี */
+.container-result tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* สไตล์สำหรับปุ่ม "Back to Form" */
+.container-result button {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.4em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.container-result button:hover {
+    background-color: #0056b3;
+}
+
+.result-content {
+    display: flex; /* ใช้ Flexbox เพื่อจัดแนว */
+    justify-content: space-between; /* ให้มีช่องว่างระหว่าง QR code และตาราง */
+    align-items: flex-start; /* จัดให้ด้านบนตรงกัน */
+    margin-top: 20px; /* เพิ่มระยะห่างด้านบน */
+}
+
+.qr-code {
+    max-width: 200px; /* จำกัดขนาด QR code */
+    margin-right: 20px; /* เพิ่มระยะห่างระหว่าง QR code กับตาราง */
+}
+
+.data-table {
+    flex-grow: 1; /* ทำให้ตารางขยายเต็มที่ */
+    width: 100%; /* ปรับขนาดตาราง */
+}
